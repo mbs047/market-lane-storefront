@@ -27,6 +27,6 @@ class ProductsPageTest extends TestCase
             ->assertSee('Sony WH-1000XM5 Headphones')
             ->assertSee('$1,099.00');
 
-        $this->assertSame(20, Product::query()->count());
+        $this->assertGreaterThanOrEqual(200, Product::query()->count());
     }
 }

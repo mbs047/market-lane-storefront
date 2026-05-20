@@ -23,13 +23,13 @@ class StoreDataTest extends TestCase
         $this->seed(DatabaseSeeder::class);
 
         $this->assertSame(11, Category::query()->count());
-        $this->assertSame(16, Brand::query()->count());
-        $this->assertSame(20, Product::query()->count());
+        $this->assertGreaterThanOrEqual(50, Brand::query()->count());
+        $this->assertGreaterThanOrEqual(200, Product::query()->count());
         $this->assertSame(8, Customer::query()->count());
         $this->assertSame(6, Order::query()->count());
         $this->assertSame(11, OrderItem::query()->count());
         $this->assertSame(12, ProductReview::query()->count());
-        $this->assertSame(40, InventoryMovement::query()->count());
+        $this->assertSame(Product::query()->count() * 2, InventoryMovement::query()->count());
 
         $product = Product::query()
             ->where('sku', 'PRD-1001')

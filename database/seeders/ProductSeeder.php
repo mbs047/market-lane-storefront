@@ -85,7 +85,7 @@ class ProductSeeder extends Seeder
                 'sku' => 'PRD-1004',
                 'name' => 'Apple MacBook Air 13-inch M3',
                 'brand_slug' => 'apple',
-                'category_slug' => 'e-readers',
+                'category_slug' => 'computers',
                 'price' => 1099.00,
                 'previous_price' => 1199.00,
                 'stock' => 8,
@@ -106,7 +106,7 @@ class ProductSeeder extends Seeder
                 'sku' => 'PRD-1005',
                 'name' => 'Dell XPS 13 Laptop',
                 'brand_slug' => 'dell',
-                'category_slug' => 'accessories',
+                'category_slug' => 'computers',
                 'price' => 999.99,
                 'previous_price' => null,
                 'stock' => 7,
@@ -232,7 +232,7 @@ class ProductSeeder extends Seeder
                 'sku' => 'PRD-1011',
                 'name' => 'Kindle Paperwhite 16GB',
                 'brand_slug' => 'amazon',
-                'category_slug' => 'computers',
+                'category_slug' => 'e-readers',
                 'price' => 149.99,
                 'previous_price' => null,
                 'stock' => 20,
@@ -253,7 +253,7 @@ class ProductSeeder extends Seeder
                 'sku' => 'PRD-1012',
                 'name' => 'Logitech MX Master 3S Mouse',
                 'brand_slug' => 'logitech',
-                'category_slug' => 'computers',
+                'category_slug' => 'accessories',
                 'price' => 99.99,
                 'previous_price' => null,
                 'stock' => 30,
@@ -440,6 +440,8 @@ class ProductSeeder extends Seeder
             ],
         ];
 
+        $products = array_merge($products, $this->additionalRealProducts());
+
         foreach ($products as $product) {
             $categorySlug = $product['category_slug'];
             $brandSlug = $product['brand_slug'];
@@ -459,5 +461,308 @@ class ProductSeeder extends Seeder
                 $product,
             );
         }
+    }
+
+    private function additionalRealProducts(): array
+    {
+        $items = [
+            ['apple', 'smartphones', 'Apple iPhone 15 128GB', 799.00, 'phone-titanium', 'iPhone'],
+            ['apple', 'smartphones', 'Apple iPhone 15 Plus 128GB', 899.00, 'phone-titanium', 'iPhone'],
+            ['apple', 'smartphones', 'Apple iPhone 15 Pro Max 256GB', 1199.00, 'phone-titanium', 'Pro Max'],
+            ['apple', 'smartphones', 'Apple iPhone 14 128GB', 699.00, 'phone-titanium', 'iPhone'],
+            ['apple', 'smartphones', 'Apple iPhone 13 128GB', 599.00, 'phone-titanium', 'iPhone'],
+            ['samsung', 'smartphones', 'Samsung Galaxy S24', 799.99, 'phone-graphite', 'S24'],
+            ['samsung', 'smartphones', 'Samsung Galaxy S24+', 999.99, 'phone-graphite', 'S24+'],
+            ['samsung', 'smartphones', 'Samsung Galaxy S23 FE', 599.99, 'phone-graphite', 'S23 FE'],
+            ['samsung', 'smartphones', 'Samsung Galaxy Z Fold5', 1799.99, 'phone-graphite', 'Fold5'],
+            ['samsung', 'smartphones', 'Samsung Galaxy Z Flip5', 999.99, 'phone-graphite', 'Flip5'],
+            ['google', 'smartphones', 'Google Pixel 8 128GB', 699.00, 'phone-graphite', 'Pixel 8'],
+            ['google', 'smartphones', 'Google Pixel 8 Pro 128GB', 999.00, 'phone-graphite', 'Pixel Pro'],
+            ['google', 'smartphones', 'Google Pixel 8a 128GB', 499.00, 'phone-graphite', 'Pixel 8a'],
+            ['oneplus', 'smartphones', 'OnePlus 12 256GB', 799.99, 'phone-graphite', 'OnePlus'],
+            ['oneplus', 'smartphones', 'OnePlus Open 512GB', 1699.99, 'phone-graphite', 'Open'],
+            ['motorola', 'smartphones', 'Motorola razr+ 2023', 999.99, 'phone-graphite', 'razr+'],
+            ['motorola', 'smartphones', 'Motorola Edge+ 2023', 799.99, 'phone-graphite', 'Edge+'],
+            ['apple', 'smartphones', 'Apple iPhone SE 64GB', 429.00, 'phone-titanium', 'SE'],
+            ['samsung', 'smartphones', 'Samsung Galaxy A54 5G', 449.99, 'phone-graphite', 'A54'],
+            ['google', 'smartphones', 'Google Pixel Fold', 1799.00, 'phone-graphite', 'Fold'],
+            ['apple', 'computers', 'Apple MacBook Air 15-inch M3', 1299.00, 'laptop-teal', 'Air 15'],
+            ['apple', 'computers', 'Apple MacBook Pro 14-inch M3', 1599.00, 'laptop-teal', 'MBP 14'],
+            ['apple', 'computers', 'Apple MacBook Pro 16-inch M3 Pro', 2499.00, 'laptop-teal', 'MBP 16'],
+            ['apple', 'computers', 'Apple iMac 24-inch M3', 1299.00, 'laptop-teal', 'iMac'],
+            ['apple', 'computers', 'Apple Mac mini M2', 599.00, 'laptop-teal', 'Mac mini'],
+            ['dell', 'computers', 'Dell XPS 15 Laptop', 1499.99, 'laptop-silver', 'XPS 15'],
+            ['dell', 'computers', 'Dell XPS 16 Laptop', 1899.99, 'laptop-silver', 'XPS 16'],
+            ['dell', 'computers', 'Dell Inspiron 15 Laptop', 529.99, 'laptop-silver', 'Inspiron'],
+            ['dell', 'computers', 'Dell Alienware m16 R2 Gaming Laptop', 1699.99, 'laptop-silver', 'm16'],
+            ['lenovo', 'computers', 'Lenovo ThinkPad X1 Carbon Gen 12', 1799.00, 'laptop-silver', 'X1'],
+            ['lenovo', 'computers', 'Lenovo Yoga 7i 14-inch', 849.99, 'laptop-silver', 'Yoga'],
+            ['lenovo', 'computers', 'Lenovo Legion Pro 5i', 1499.99, 'laptop-silver', 'Legion'],
+            ['hp', 'computers', 'HP Spectre x360 14', 1399.99, 'laptop-silver', 'Spectre'],
+            ['hp', 'computers', 'HP Envy x360 15', 799.99, 'laptop-silver', 'Envy'],
+            ['hp', 'computers', 'HP Pavilion Plus 14', 899.99, 'laptop-silver', 'Pavilion'],
+            ['asus', 'computers', 'ASUS Zenbook 14 OLED', 999.99, 'laptop-silver', 'Zenbook'],
+            ['asus', 'computers', 'ASUS ROG Zephyrus G14', 1599.99, 'laptop-silver', 'G14'],
+            ['asus', 'computers', 'ASUS TUF Gaming A15', 1099.99, 'laptop-silver', 'TUF'],
+            ['acer', 'computers', 'Acer Swift Go 14', 849.99, 'laptop-silver', 'Swift'],
+            ['acer', 'computers', 'Acer Chromebook Spin 714', 699.99, 'laptop-silver', 'Spin'],
+            ['apple', 'computers', 'Apple iPad Pro 11-inch M4', 999.00, 'tablet-green', 'iPad Pro'],
+            ['apple', 'computers', 'Apple iPad Air 11-inch M2', 599.00, 'tablet-green', 'iPad Air'],
+            ['samsung', 'computers', 'Samsung Galaxy Tab S9 Ultra', 1199.99, 'tablet-green', 'Tab S9'],
+            ['microsoft', 'computers', 'Microsoft Surface Laptop 6', 1199.99, 'laptop-silver', 'Surface'],
+            ['microsoft', 'computers', 'Microsoft Surface Pro 10', 1199.99, 'tablet-green', 'Surface'],
+            ['sony', 'audio', 'Sony WF-1000XM5 Earbuds', 299.99, 'earbuds-black', 'WF-XM5'],
+            ['sony', 'audio', 'Sony WH-1000XM4 Headphones', 349.99, 'audio-black', 'XM4'],
+            ['sony', 'audio', 'Sony ULT Wear Headphones', 199.99, 'audio-black', 'ULT'],
+            ['apple', 'audio', 'Apple AirPods Max', 549.00, 'audio-black', 'AirPods'],
+            ['apple', 'audio', 'Apple AirPods (3rd Generation)', 169.00, 'earbuds-white', 'AirPods'],
+            ['beats', 'audio', 'Beats Studio Pro Headphones', 349.99, 'audio-black', 'Beats'],
+            ['beats', 'audio', 'Beats Fit Pro Earbuds', 199.99, 'earbuds-black', 'Fit Pro'],
+            ['bose', 'audio', 'Bose QuietComfort Headphones', 349.00, 'audio-black', 'QC'],
+            ['bose', 'audio', 'Bose SoundLink Flex Speaker', 149.00, 'audio-black', 'Flex'],
+            ['jbl', 'audio', 'JBL Charge 5 Speaker', 179.95, 'audio-black', 'Charge'],
+            ['jbl', 'audio', 'JBL Flip 6 Speaker', 129.95, 'audio-black', 'Flip'],
+            ['jbl', 'audio', 'JBL Live 770NC Headphones', 199.95, 'audio-black', '770NC'],
+            ['sennheiser', 'audio', 'Sennheiser Momentum 4 Wireless', 379.95, 'audio-black', 'M4'],
+            ['sennheiser', 'audio', 'Sennheiser Momentum True Wireless 4', 299.95, 'earbuds-black', 'MTW4'],
+            ['marshall', 'audio', 'Marshall Major IV Headphones', 149.99, 'audio-black', 'Major'],
+            ['marshall', 'audio', 'Marshall Emberton II Speaker', 169.99, 'audio-black', 'Emberton'],
+            ['anker', 'audio', 'Anker Soundcore Liberty 4 NC', 99.99, 'earbuds-black', 'Liberty'],
+            ['anker', 'audio', 'Anker Soundcore Motion X600 Speaker', 199.99, 'audio-black', 'X600'],
+            ['logitech', 'audio', 'Logitech G Pro X 2 Lightspeed Headset', 249.99, 'audio-black', 'G Pro'],
+            ['microsoft', 'audio', 'Microsoft Xbox Wireless Headset', 99.99, 'audio-black', 'Xbox'],
+            ['samsung', 'audio', 'Samsung Galaxy Buds2 Pro', 229.99, 'earbuds-white', 'Buds2'],
+            ['google', 'audio', 'Google Pixel Buds Pro', 199.99, 'earbuds-white', 'Buds'],
+            ['razer', 'audio', 'Razer BlackShark V2 Pro Headset', 199.99, 'audio-black', 'V2 Pro'],
+            ['sony', 'tv-home-theater', 'Sony Bravia XR A80L OLED 55-inch TV', 1699.99, 'tv-blue', 'Bravia'],
+            ['sony', 'tv-home-theater', 'Sony HT-A5000 Soundbar', 999.99, 'audio-black', 'HT-A5000'],
+            ['samsung', 'tv-home-theater', 'Samsung 65-inch The Frame QLED TV', 1999.99, 'tv-blue', 'Frame'],
+            ['samsung', 'tv-home-theater', 'Samsung HW-Q990C Soundbar', 1599.99, 'audio-black', 'Q990C'],
+            ['lg', 'tv-home-theater', 'LG C3 55-inch OLED evo TV', 1499.99, 'tv-blue', 'LG C3'],
+            ['lg', 'tv-home-theater', 'LG G3 65-inch OLED evo TV', 2499.99, 'tv-blue', 'LG G3'],
+            ['lg', 'tv-home-theater', 'LG S95QR Soundbar', 1499.99, 'audio-black', 'S95QR'],
+            ['tcl', 'tv-home-theater', 'TCL 65-inch QM8 QLED TV', 1199.99, 'tv-blue', 'QM8'],
+            ['tcl', 'tv-home-theater', 'TCL 55-inch Q7 QLED TV', 599.99, 'tv-blue', 'Q7'],
+            ['hisense', 'tv-home-theater', 'Hisense 65-inch U8K Mini-LED TV', 1099.99, 'tv-blue', 'U8K'],
+            ['hisense', 'tv-home-theater', 'Hisense 55-inch U7K ULED TV', 649.99, 'tv-blue', 'U7K'],
+            ['amazon', 'tv-home-theater', 'Amazon Fire TV Stick 4K Max', 59.99, 'tablet-green', 'Fire TV'],
+            ['apple', 'tv-home-theater', 'Apple TV 4K Wi-Fi 64GB', 129.00, 'tablet-green', 'Apple TV'],
+            ['google', 'tv-home-theater', 'Chromecast with Google TV 4K', 49.99, 'tablet-green', 'Cast'],
+            ['bose', 'tv-home-theater', 'Bose Smart Soundbar 600', 499.00, 'audio-black', 'Bose'],
+            ['sony', 'gaming', 'PlayStation Portal Remote Player', 199.99, 'console-white', 'Portal'],
+        ];
+
+        $items = array_merge($items, [
+            ['sony', 'gaming', 'PlayStation 5 Digital Edition', 449.99, 'console-white', 'PS5'],
+            ['sony', 'gaming', 'DualSense Wireless Controller', 69.99, 'console-white', 'DualSense'],
+            ['microsoft', 'gaming', 'Xbox Series S 512GB', 299.99, 'console-white', 'Series S'],
+            ['microsoft', 'gaming', 'Xbox Wireless Controller', 64.99, 'console-black', 'Xbox'],
+            ['nintendo', 'gaming', 'Nintendo Switch Lite', 199.99, 'gaming-red', 'Switch'],
+            ['nintendo', 'gaming', 'Nintendo Switch Joy-Con Pair', 79.99, 'gaming-red', 'Joy-Con'],
+            ['valve', 'gaming', 'Steam Deck OLED 512GB', 549.00, 'console-black', 'Steam'],
+            ['razer', 'gaming', 'Razer Kishi V2 Mobile Controller', 99.99, 'console-black', 'Kishi'],
+            ['razer', 'gaming', 'Razer Wolverine V2 Chroma Controller', 149.99, 'console-black', 'Wolverine'],
+            ['meta', 'gaming', 'Meta Quest 3 128GB', 499.99, 'console-white', 'Quest 3'],
+            ['logitech', 'gaming', 'Logitech G Cloud Gaming Handheld', 299.99, 'console-white', 'G Cloud'],
+            ['asus', 'gaming', 'ASUS ROG Ally Z1 Extreme', 699.99, 'console-white', 'ROG Ally'],
+            ['lenovo', 'gaming', 'Lenovo Legion Go', 699.99, 'console-black', 'Legion'],
+            ['steelseries', 'gaming', 'SteelSeries Arctis Nova 7 Wireless', 179.99, 'audio-black', 'Arctis'],
+            ['logitech', 'gaming', 'Logitech G502 X Plus Mouse', 159.99, 'accessory-gray', 'G502'],
+            ['razer', 'gaming', 'Razer DeathAdder V3 Pro Mouse', 149.99, 'accessory-gray', 'Razer'],
+            ['canon', 'cameras', 'Canon EOS R8 Mirrorless Camera', 1499.99, 'camera-silver', 'R8'],
+            ['canon', 'cameras', 'Canon EOS R10 Mirrorless Camera', 979.99, 'camera-silver', 'R10'],
+            ['canon', 'cameras', 'Canon PowerShot V10', 429.99, 'camera-silver', 'V10'],
+            ['sony', 'cameras', 'Sony Alpha a7 IV Mirrorless Camera', 2499.99, 'camera-black', 'a7 IV'],
+            ['sony', 'cameras', 'Sony ZV-E10 Mirrorless Camera', 699.99, 'camera-black', 'ZV-E10'],
+            ['sony', 'cameras', 'Sony ZV-1 II Compact Camera', 899.99, 'camera-black', 'ZV-1'],
+            ['nikon', 'cameras', 'Nikon Z 6II Mirrorless Camera', 1999.95, 'camera-black', 'Z 6II'],
+            ['nikon', 'cameras', 'Nikon Z fc Mirrorless Camera', 959.95, 'camera-black', 'Z fc'],
+            ['nikon', 'cameras', 'Nikon COOLPIX P950', 799.95, 'camera-black', 'P950'],
+            ['fujifilm', 'cameras', 'Fujifilm X-T5 Mirrorless Camera', 1699.95, 'camera-silver', 'X-T5'],
+            ['fujifilm', 'cameras', 'Fujifilm X100VI Digital Camera', 1599.95, 'camera-silver', 'X100VI'],
+            ['fujifilm', 'cameras', 'Fujifilm Instax Mini 12', 79.95, 'camera-silver', 'Instax'],
+            ['gopro', 'cameras', 'GoPro HERO11 Black', 349.99, 'camera-black', 'HERO11'],
+            ['gopro', 'cameras', 'GoPro MAX 360 Camera', 499.99, 'camera-black', 'MAX'],
+            ['insta360', 'cameras', 'Insta360 X4 360 Action Camera', 499.99, 'camera-black', 'X4'],
+            ['insta360', 'cameras', 'Insta360 GO 3S Action Camera', 399.99, 'camera-black', 'GO 3S'],
+            ['amazon', 'e-readers', 'Kindle 16GB', 99.99, 'tablet-green', 'Kindle'],
+            ['amazon', 'e-readers', 'Kindle Scribe 16GB', 339.99, 'tablet-green', 'Scribe'],
+            ['amazon', 'e-readers', 'Kindle Oasis 32GB', 279.99, 'tablet-green', 'Oasis'],
+            ['kobo', 'e-readers', 'Kobo Clara BW', 129.99, 'tablet-green', 'Clara'],
+            ['kobo', 'e-readers', 'Kobo Clara Colour', 149.99, 'tablet-green', 'Clara'],
+            ['kobo', 'e-readers', 'Kobo Libra Colour', 219.99, 'tablet-green', 'Libra'],
+            ['kobo', 'e-readers', 'Kobo Sage', 269.99, 'tablet-green', 'Sage'],
+            ['kobo', 'e-readers', 'Kobo Elipsa 2E', 399.99, 'tablet-green', 'Elipsa'],
+            ['amazon', 'e-readers', 'Kindle Kids 16GB', 119.99, 'tablet-green', 'Kids'],
+            ['amazon', 'e-readers', 'Kindle Paperwhite Kids 16GB', 169.99, 'tablet-green', 'Kids'],
+            ['logitech', 'accessories', 'Logitech MX Keys S Keyboard', 109.99, 'accessory-gray', 'MX Keys'],
+            ['logitech', 'accessories', 'Logitech Lift Vertical Mouse', 69.99, 'accessory-gray', 'Lift'],
+            ['logitech', 'accessories', 'Logitech Brio 4K Webcam', 199.99, 'accessory-gray', 'Brio'],
+            ['apple', 'accessories', 'Apple Magic Keyboard with Touch ID', 149.00, 'accessory-gray', 'Magic'],
+            ['apple', 'accessories', 'Apple Magic Mouse', 79.00, 'accessory-gray', 'Mouse'],
+            ['apple', 'accessories', 'Apple Pencil Pro', 129.00, 'accessory-gray', 'Pencil'],
+            ['samsung', 'accessories', 'Samsung T7 Shield 1TB Portable SSD', 109.99, 'accessory-gray', 'T7'],
+            ['sandisk', 'accessories', 'SanDisk Extreme Portable SSD 1TB', 119.99, 'accessory-gray', 'SSD'],
+            ['anker', 'accessories', 'Anker 737 Power Bank', 149.99, 'accessory-gray', '737'],
+            ['anker', 'accessories', 'Anker 735 Charger', 59.99, 'accessory-gray', '735'],
+            ['anker', 'accessories', 'Anker MagGo 3-in-1 Charging Station', 109.99, 'accessory-gray', 'MagGo'],
+            ['belkin', 'accessories', 'Belkin BoostCharge Pro 3-in-1 Stand', 149.99, 'accessory-gray', 'Belkin'],
+            ['belkin', 'accessories', 'Belkin Thunderbolt 4 Dock Pro', 399.99, 'accessory-gray', 'Dock'],
+            ['microsoft', 'accessories', 'Microsoft Surface Arc Mouse', 79.99, 'accessory-gray', 'Arc'],
+            ['razer', 'accessories', 'Razer Basilisk V3 Mouse', 69.99, 'accessory-gray', 'Basilisk'],
+            ['jbl', 'accessories', 'JBL Quantum Stream Microphone', 99.95, 'accessory-gray', 'Quantum'],
+            ['google', 'accessories', 'Google Nest Wifi Pro', 199.99, 'accessory-gray', 'Nest'],
+            ['tp-link', 'accessories', 'TP-Link Deco XE75 Mesh WiFi 6E', 299.99, 'accessory-gray', 'Deco'],
+            ['ubiquiti', 'accessories', 'Ubiquiti UniFi Dream Router', 199.00, 'accessory-gray', 'UniFi'],
+            ['amazon', 'accessories', 'Amazon Echo Show 8', 149.99, 'tablet-green', 'Echo'],
+        ]);
+
+        $items = array_merge($items, [
+            ['dyson', 'home-kitchen', 'Dyson Purifier Cool TP07', 649.99, 'home-gold', 'TP07'],
+            ['dyson', 'home-kitchen', 'Dyson Airwrap Multi-Styler', 599.99, 'home-gold', 'Airwrap'],
+            ['dyson', 'home-kitchen', 'Dyson Supersonic Hair Dryer', 429.99, 'home-gold', 'Dyson'],
+            ['shark', 'home-kitchen', 'Shark Stratos Cordless Vacuum', 499.99, 'home-gold', 'Stratos'],
+            ['shark', 'home-kitchen', 'Shark FlexStyle Air Styling System', 299.99, 'home-gold', 'Flex'],
+            ['irobot', 'home-kitchen', 'iRobot Roomba j7+', 799.99, 'home-gold', 'Roomba'],
+            ['irobot', 'home-kitchen', 'iRobot Braava Jet m6', 449.99, 'home-gold', 'Braava'],
+            ['instant-pot', 'home-kitchen', 'Instant Pot Pro 10-in-1 6 Quart', 169.99, 'kitchen-silver', 'Pro'],
+            ['instant-pot', 'home-kitchen', 'Instant Pot Vortex Plus Air Fryer', 129.99, 'kitchen-black', 'Vortex'],
+            ['ninja', 'home-kitchen', 'Ninja Creami Deluxe', 249.99, 'kitchen-black', 'Creami'],
+            ['ninja', 'home-kitchen', 'Ninja Woodfire Outdoor Grill', 369.99, 'kitchen-black', 'Woodfire'],
+            ['kitchenaid', 'home-kitchen', 'KitchenAid Artisan Series 5-Quart Stand Mixer', 449.99, 'kitchen-silver', 'Mixer'],
+            ['kitchenaid', 'home-kitchen', 'KitchenAid 3.5 Cup Food Chopper', 59.99, 'kitchen-silver', 'Chopper'],
+            ['philips', 'home-kitchen', 'Philips 3200 Series Fully Automatic Espresso Machine', 799.99, 'kitchen-silver', 'Philips'],
+            ['philips', 'home-kitchen', 'Philips Sonicare DiamondClean 9000', 199.99, 'kitchen-silver', 'Sonicare'],
+            ['breville', 'home-kitchen', 'Breville Barista Express Espresso Machine', 699.95, 'kitchen-silver', 'Barista'],
+            ['breville', 'home-kitchen', 'Breville Smart Oven Air Fryer Pro', 399.95, 'kitchen-silver', 'Oven'],
+            ['google', 'home-kitchen', 'Google Nest Hub Max', 229.00, 'tablet-green', 'Nest Hub'],
+            ['ring', 'home-kitchen', 'Ring Video Doorbell Pro 2', 249.99, 'accessory-gray', 'Ring'],
+            ['arlo', 'home-kitchen', 'Arlo Pro 5S 2K Security Camera', 249.99, 'camera-black', 'Arlo'],
+            ['apple', 'wearables', 'Apple Watch Series 9 GPS 45mm', 429.00, 'watch-blue', 'Watch'],
+            ['apple', 'wearables', 'Apple Watch Ultra 2', 799.00, 'watch-blue', 'Ultra'],
+            ['apple', 'wearables', 'Apple Watch SE GPS 40mm', 249.00, 'watch-blue', 'SE'],
+            ['samsung', 'wearables', 'Samsung Galaxy Watch6 Classic 43mm', 399.99, 'watch-blue', 'Watch6'],
+            ['samsung', 'wearables', 'Samsung Galaxy Watch6 40mm', 299.99, 'watch-blue', 'Watch6'],
+            ['google', 'wearables', 'Google Pixel Watch 2', 349.99, 'watch-blue', 'Pixel'],
+            ['fitbit', 'wearables', 'Fitbit Charge 6', 159.95, 'watch-blue', 'Charge'],
+            ['fitbit', 'wearables', 'Fitbit Versa 4', 199.95, 'watch-blue', 'Versa'],
+            ['fitbit', 'wearables', 'Fitbit Inspire 3', 99.95, 'watch-blue', 'Inspire'],
+            ['garmin', 'wearables', 'Garmin Venu 3', 449.99, 'watch-blue', 'Venu'],
+            ['garmin', 'wearables', 'Garmin Forerunner 965', 599.99, 'watch-blue', '965'],
+            ['garmin', 'wearables', 'Garmin Fenix 7 Pro', 799.99, 'watch-blue', 'Fenix'],
+            ['garmin', 'wearables', 'Garmin Instinct 2 Solar', 399.99, 'watch-blue', 'Instinct'],
+            ['samsung', 'wearables', 'Samsung Galaxy Fit3', 59.99, 'watch-blue', 'Fit3'],
+            ['meta', 'wearables', 'Ray-Ban Meta Wayfarer Smart Glasses', 299.00, 'watch-blue', 'Meta'],
+            ['lego', 'toys', 'LEGO Icons Bonsai Tree', 49.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Ideas The Starry Night', 169.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Technic NASA Mars Rover Perseverance', 99.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Star Wars Millennium Falcon', 849.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Architecture Statue of Liberty', 119.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Icons Atari 2600', 239.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Ideas Polaroid OneStep SX-70 Camera', 79.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Icons Retro Radio', 99.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Technic Yamaha MT-10 SP', 239.99, 'toy-red', 'LEGO'],
+            ['lego', 'toys', 'LEGO Icons Natural History Museum', 299.99, 'toy-red', 'LEGO'],
+        ]);
+
+        return collect($items)
+            ->map(function (array $item, int $index): array {
+                [$brandSlug, $categorySlug, $name, $price, $imageTheme, $imageLabel] = $item;
+                $stock = 5 + (($index * 7) % 42);
+                $rating = 4.1 + (($index % 9) * 0.1);
+                $reviewCount = 18 + (($index * 13) % 280);
+
+                return [
+                    'sku' => 'PRD-'.str_pad((string) (2001 + $index), 4, '0', STR_PAD_LEFT),
+                    'name' => $name,
+                    'brand_slug' => $brandSlug,
+                    'category_slug' => $categorySlug,
+                    'price' => $price,
+                    'previous_price' => $index % 5 === 0 ? round($price * 1.12, 2) : null,
+                    'stock' => $stock,
+                    'rating' => min(4.9, $rating),
+                    'review_count' => $reviewCount,
+                    'is_featured' => $index % 37 === 0,
+                    'is_new' => $index % 11 === 0,
+                    'image_label' => $imageLabel,
+                    'image_theme' => $imageTheme,
+                    'color_name' => $this->colorForTheme($imageTheme),
+                    'short_description' => $this->shortDescriptionFor($categorySlug, $name),
+                    'description' => $this->descriptionFor($categorySlug, $name),
+                    'shipping_weight_grams' => $this->shippingWeightFor($categorySlug),
+                    'warranty_months' => $categorySlug === 'toys' ? null : 12,
+                    'specifications' => $this->specificationsFor($categorySlug),
+                ];
+            })
+            ->all();
+    }
+
+    private function shortDescriptionFor(string $categorySlug, string $name): string
+    {
+        return match ($categorySlug) {
+            'smartphones' => $name.' with modern mobile performance, sharp cameras, and everyday 5G connectivity.',
+            'computers' => $name.' for productivity, study, creative work, and everyday computing.',
+            'audio' => $name.' for focused listening, calls, commuting, and entertainment.',
+            'tv-home-theater' => $name.' for streaming, movies, sports, and living-room entertainment.',
+            'gaming' => $name.' for console, handheld, or desktop gaming setups.',
+            'cameras' => $name.' for content creation, travel, video, and everyday photography.',
+            'e-readers' => $name.' for focused reading with portable storage and long battery life.',
+            'accessories' => $name.' as a practical upgrade for desks, devices, and connected setups.',
+            'home-kitchen' => $name.' for everyday home routines, cooking, cleaning, and convenience.',
+            'wearables' => $name.' for health tracking, notifications, workouts, and daily activity.',
+            'toys' => $name.' as a recognizable building set for collecting, display, and gifting.',
+            default => $name.' with seeded storefront details for testing.',
+        };
+    }
+
+    private function descriptionFor(string $categorySlug, string $name): string
+    {
+        return $this->shortDescriptionFor($categorySlug, $name).' This seeded real-world product record includes pricing, stock, ratings, review counts, and display fields for storefront testing.';
+    }
+
+    private function colorForTheme(string $imageTheme): string
+    {
+        return match ($imageTheme) {
+            'phone-titanium' => 'Natural Titanium',
+            'phone-graphite', 'audio-black', 'earbuds-black', 'console-black', 'camera-black', 'kitchen-black' => 'Black',
+            'laptop-silver', 'camera-silver', 'kitchen-silver', 'accessory-gray' => 'Silver',
+            'laptop-teal', 'tablet-green', 'tv-blue', 'watch-blue' => 'Blue',
+            'gaming-red', 'toy-red' => 'Red',
+            'earbuds-white', 'console-white' => 'White',
+            default => 'Assorted',
+        };
+    }
+
+    private function shippingWeightFor(string $categorySlug): int
+    {
+        return match ($categorySlug) {
+            'smartphones', 'e-readers', 'wearables' => 220,
+            'audio', 'accessories' => 450,
+            'computers' => 1450,
+            'tv-home-theater' => 7000,
+            'gaming' => 1800,
+            'cameras' => 650,
+            'home-kitchen' => 4200,
+            'toys' => 900,
+            default => 1000,
+        };
+    }
+
+    private function specificationsFor(string $categorySlug): array
+    {
+        return match ($categorySlug) {
+            'smartphones' => ['connectivity' => '5G', 'condition' => 'New', 'warranty' => '1 year'],
+            'computers' => ['storage' => 'Configurable', 'condition' => 'New', 'warranty' => '1 year'],
+            'audio' => ['connection' => 'Wireless', 'condition' => 'New', 'warranty' => '1 year'],
+            'tv-home-theater' => ['resolution' => '4K/Smart', 'condition' => 'New', 'warranty' => '1 year'],
+            'gaming' => ['platform' => 'Gaming', 'condition' => 'New', 'warranty' => '1 year'],
+            'cameras' => ['capture' => 'Photo/Video', 'condition' => 'New', 'warranty' => '1 year'],
+            'e-readers' => ['display' => 'E ink', 'condition' => 'New', 'warranty' => '1 year'],
+            'accessories' => ['compatibility' => 'Multi-device', 'condition' => 'New', 'warranty' => '1 year'],
+            'home-kitchen' => ['use' => 'Home', 'condition' => 'New', 'warranty' => '1 year'],
+            'wearables' => ['tracking' => 'Health/activity', 'condition' => 'New', 'warranty' => '1 year'],
+            'toys' => ['type' => 'Building set', 'condition' => 'New', 'age' => 'Varies'],
+            default => ['condition' => 'New', 'warranty' => '1 year'],
+        };
     }
 }
