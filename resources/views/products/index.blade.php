@@ -23,7 +23,9 @@
 
                 <nav class="hidden items-center gap-6 text-sm font-semibold text-slate-600 lg:flex">
                     <a href="#shop" class="text-emerald-700">Shop</a>
-                    <a href="#categories">Categories</a>
+                    <a href="{{ route('store.collections') }}">Collections</a>
+                    <a href="{{ route('store.deals') }}">Deals</a>
+                    <a href="{{ route('store.support') }}">Support</a>
                     <a href="#testing-data">Testing Data</a>
                 </nav>
 

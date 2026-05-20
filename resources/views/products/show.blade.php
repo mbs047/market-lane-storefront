@@ -18,6 +18,9 @@
 
                 <div class="flex items-center gap-3">
                     <a href="{{ route('products.index') }}#shop" class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-emerald-200 hover:text-emerald-700">Catalog</a>
+                    <a href="{{ route('store.collections') }}" class="hidden rounded-lg border border-slate-200 px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-emerald-200 hover:text-emerald-700 sm:inline-flex">Collections</a>
+                    <a href="{{ route('store.deals') }}" class="hidden rounded-lg border border-slate-200 px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-emerald-200 hover:text-emerald-700 md:inline-flex">Deals</a>
+                    <a href="{{ route('store.support') }}" class="hidden rounded-lg border border-slate-200 px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-emerald-200 hover:text-emerald-700 lg:inline-flex">Support</a>
                     <span class="hidden rounded-lg bg-slate-950 px-4 py-2 text-sm font-bold text-white sm:inline-flex">
                         Cart <span class="ml-2 rounded bg-white/15 px-2" data-cart-count>0</span>
                     </span>

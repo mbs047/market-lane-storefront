@@ -59,4 +59,28 @@ class ProductsPageTest extends TestCase
         $this->assertGreaterThan(0, $product->reviews->count());
         $this->assertGreaterThan(0, $product->inventoryMovements->count());
     }
+
+    public function test_store_style_pages_render(): void
+    {
+        $this->withoutVite();
+        $this->seed(DatabaseSeeder::class);
+
+        $this->get(route('store.collections'))
+            ->assertOk()
+            ->assertSee('Store collections')
+            ->assertSee('Smartphones')
+            ->assertSee('Computers');
+
+        $this->get(route('store.deals'))
+            ->assertOk()
+            ->assertSee('Current deals')
+            ->assertSee('Seeded sale products')
+            ->assertSee('Save $');
+
+        $this->get(route('store.support'))
+            ->assertOk()
+            ->assertSee('Support, shipping, and returns')
+            ->assertSee('Common questions')
+            ->assertSee('30-day window');
+    }
 }
