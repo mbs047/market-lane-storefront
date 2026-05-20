@@ -1,13 +1,14 @@
-# Simple Products Laravel App
+# Market Lane Laravel Storefront
 
-This is a small Laravel example app that displays a seeded products table. It uses SQLite by default, includes 20 recognizable product names, and keeps the frontend intentionally simple with Tailwind CSS.
+Market Lane is a simple Laravel storefront built for testing. It uses SQLite by default, ships with realistic seeded ecommerce data, and renders a Tailwind CSS store experience with product cards, category filters, search, sorting, a cart preview, and Model Mind integration.
 
 ## What is Included
 
-- A `products` database table with SKU, name, brand, category, price, and stock columns.
-- A `ProductSeeder` with 20 example product records.
-- A simple home page at `/` that lists the products in a Tailwind-styled table.
-- A feature test that verifies the seeded product page.
+- 20 seeded products with real product names, prices, stock, ratings, descriptions, specifications, warranty data, and storefront display metadata.
+- Related test models for `Category`, `Brand`, `Customer`, `Order`, `OrderItem`, `ProductReview`, and `InventoryMovement`.
+- Seeded sample orders, reviews, customers, and inventory events for testing data relationships.
+- A public storefront at `/` with category filtering, search, sorting, product cards, and a client-side cart preview.
+- Feature tests covering the storefront page and the seeded relational data.
 
 ## Setup
 
@@ -23,6 +24,12 @@ php artisan serve
 
 Then open the local URL from `php artisan serve`.
 
+For production-style frontend assets:
+
+```bash
+npm run build
+```
+
 ## Tests
 
 ```bash
@@ -30,3 +37,17 @@ php artisan test
 ```
 
 The test suite uses an in-memory SQLite database.
+
+## Main Seeders
+
+- `CategorySeeder`
+- `BrandSeeder`
+- `ProductSeeder`
+- `CustomerSeeder`
+- `StoreActivitySeeder`
+
+Run all seeders through:
+
+```bash
+php artisan migrate:fresh --seed
+```
