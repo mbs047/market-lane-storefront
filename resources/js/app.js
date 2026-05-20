@@ -9,11 +9,19 @@ const categoryButtons = Array.from(document.querySelectorAll('[data-category-fil
 const sortSelect = document.querySelector('[data-sort-select]');
 const productsGrid = document.querySelector('[data-products-grid]');
 const emptyState = document.querySelector('[data-empty-state]');
+const productsSummary = document.querySelector('[data-products-summary]');
+const visibleProductsCount = document.querySelector('[data-visible-products-count]');
+const matchedProductsCount = document.querySelector('[data-matched-products-count]');
+const showMorePanel = document.querySelector('[data-show-more-panel]');
+const showMoreButton = document.querySelector('[data-show-more-products]');
+const showMoreNote = document.querySelector('[data-show-more-note]');
 const initialCartScript = document.querySelector('[data-initial-cart]');
 const cartItemsTarget = document.querySelector('[data-cart-items]');
 const clearCartButton = document.querySelector('[data-clear-cart]');
+const pageSize = Number(productsGrid?.dataset.pageSize || 24);
 
 let activeCategory = 'all';
+let visibleLimit = pageSize;
 const cart = new Map();
 
 const parseInitialCart = () => {
@@ -111,8 +119,8 @@ const renderCart = () => {
     cartItemsTarget.innerHTML = items.map((item) => `
         <div class="flex gap-3 rounded-lg border border-slate-200 p-3">
             <div class="product-visual ${item.theme} h-16 w-16 shrink-0">
-                <div class="product-object !h-10 !w-10 !text-[10px]">
-                    <span>${item.label}</span>
+                <div class="product-object is-cart-object !h-10 !w-10 !text-[10px]">
+                    <span class="!px-0 !text-[8px]">${item.label}</span>
                 </div>
             </div>
             <div class="min-w-0 flex-1">
@@ -133,18 +141,16 @@ const renderCart = () => {
 
 const applyFilters = () => {
     const query = (searchInput?.value || '').trim().toLowerCase();
-    let visibleCards = productCards.filter((card) => {
+    let matchedCards = productCards.filter((card) => {
         const matchesCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
         const matchesSearch = !query || card.dataset.name.includes(query);
 
-        card.hidden = !(matchesCategory && matchesSearch);
-
-        return !card.hidden;
+        return matchesCategory && matchesSearch;
     });
 
     const sortMode = sortSelect?.value || 'featured';
 
-    visibleCards = visibleCards.sort((a, b) => {
+    matchedCards = matchedCards.sort((a, b) => {
         if (sortMode === 'price-asc') {
             return Number(a.dataset.price) - Number(b.dataset.price);
         }
@@ -164,10 +170,48 @@ const applyFilters = () => {
         return Number(b.dataset.featured) - Number(a.dataset.featured);
     });
 
+    const visibleCards = matchedCards.slice(0, visibleLimit);
+
+    productCards.forEach((card) => {
+        card.hidden = true;
+    });
+
     visibleCards.forEach((card) => productsGrid?.appendChild(card));
+
+    visibleCards.forEach((card) => {
+        card.hidden = false;
+    });
 
     if (emptyState) {
         emptyState.classList.toggle('hidden', visibleCards.length > 0);
+    }
+
+    if (visibleProductsCount) {
+        visibleProductsCount.textContent = visibleCards.length;
+    }
+
+    if (matchedProductsCount) {
+        matchedProductsCount.textContent = matchedCards.length;
+    }
+
+    if (productsSummary) {
+        productsSummary.classList.toggle('text-slate-600', matchedCards.length > 0);
+        productsSummary.classList.toggle('text-amber-700', matchedCards.length === 0);
+    }
+
+    const remainingCount = matchedCards.length - visibleCards.length;
+
+    if (showMorePanel) {
+        showMorePanel.hidden = remainingCount <= 0;
+    }
+
+    if (showMoreButton) {
+        const nextCount = Math.min(pageSize, remainingCount);
+        showMoreButton.textContent = `Show ${nextCount} more ${nextCount === 1 ? 'product' : 'products'}`;
+    }
+
+    if (showMoreNote) {
+        showMoreNote.textContent = `${remainingCount} ${remainingCount === 1 ? 'product is' : 'products are'} still hidden in this view.`;
     }
 };
 
@@ -179,12 +223,25 @@ categoryButtons.forEach((button) => {
             categoryButton.classList.toggle('is-active', categoryButton === button);
         });
 
+        visibleLimit = pageSize;
         applyFilters();
     });
 });
 
-searchInput?.addEventListener('input', applyFilters);
-sortSelect?.addEventListener('change', applyFilters);
+searchInput?.addEventListener('input', () => {
+    visibleLimit = pageSize;
+    applyFilters();
+});
+
+sortSelect?.addEventListener('change', () => {
+    visibleLimit = pageSize;
+    applyFilters();
+});
+
+showMoreButton?.addEventListener('click', () => {
+    visibleLimit += pageSize;
+    applyFilters();
+});
 
 document.querySelectorAll('[data-add-to-cart]').forEach((button) => {
     button.addEventListener('click', () => {

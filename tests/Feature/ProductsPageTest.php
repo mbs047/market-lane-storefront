@@ -27,6 +27,7 @@ class ProductsPageTest extends TestCase
             ->assertSee('Testing data included')
             ->assertSee('Apple iPhone 15 Pro 256GB')
             ->assertSee('Sony WH-1000XM5 Headphones')
+            ->assertSee('Show more products')
             ->assertSee(route('products.show', $product))
             ->assertSee('$1,099.00');
 

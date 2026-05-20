@@ -136,6 +136,13 @@
                                 </label>
                             </div>
 
+                            <div class="flex flex-col justify-between gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3 sm:flex-row sm:items-center">
+                                <p class="text-sm font-semibold text-slate-600" data-products-summary>
+                                    Showing <span data-visible-products-count>{{ min(24, $products->count()) }}</span> of <span data-matched-products-count>{{ $products->count() }}</span> products
+                                </p>
+                                <p class="text-xs font-bold uppercase tracking-wide text-emerald-700">Use search, filters, or show more to browse the test catalog.</p>
+                            </div>
+
                             <div class="flex max-w-full gap-2 overflow-x-auto pb-1">
                                 <button type="button" class="category-filter is-active" data-category-filter="all">All categories</button>
                                 @foreach ($categories as $category)
@@ -147,7 +154,7 @@
                             </div>
                         </div>
 
-                        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" data-products-grid>
+                        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" data-products-grid data-page-size="24">
                             @foreach ($products as $product)
                                 @php
                                     $categorySlug = $product->categoryModel?->slug ?? \Illuminate\Support\Str::slug($product->category);
@@ -241,6 +248,13 @@
                         <div class="hidden rounded-lg border border-slate-200 bg-white p-8 text-center" data-empty-state>
                             <p class="text-lg font-bold text-slate-950">No products found</p>
                             <p class="mt-2 text-sm text-slate-500">Try a different category, search term, or sort option.</p>
+                        </div>
+
+                        <div class="mt-6 flex flex-col items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white p-4 sm:flex-row" data-show-more-panel>
+                            <p class="text-sm font-semibold text-slate-500" data-show-more-note>More products are available in this filtered view.</p>
+                            <button type="button" class="rounded-lg bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800" data-show-more-products>
+                                Show more products
+                            </button>
                         </div>
                     </div>
 

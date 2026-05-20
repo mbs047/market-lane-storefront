@@ -60,6 +60,10 @@
         @apply px-1 text-[10px];
     }
 
+    .is-cart-object span {
+        @apply px-0.5 text-[9px];
+    }
+
     .audio-black,
     .earbuds-black,
     .earbuds-white {
