@@ -30,7 +30,7 @@ class ProductsPageTest extends TestCase
             ->assertSee(route('products.show', $product))
             ->assertSee('$1,099.00');
 
-        $this->assertGreaterThanOrEqual(200, Product::query()->count());
+        $this->assertGreaterThanOrEqual(350, Product::query()->count());
     }
 
     public function test_product_details_page_shows_product_data(): void

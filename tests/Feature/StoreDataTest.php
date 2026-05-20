@@ -24,7 +24,7 @@ class StoreDataTest extends TestCase
 
         $this->assertSame(11, Category::query()->count());
         $this->assertGreaterThanOrEqual(50, Brand::query()->count());
-        $this->assertGreaterThanOrEqual(200, Product::query()->count());
+        $this->assertGreaterThanOrEqual(350, Product::query()->count());
         $this->assertSame(8, Customer::query()->count());
         $this->assertSame(6, Order::query()->count());
         $this->assertSame(11, OrderItem::query()->count());

@@ -4,7 +4,7 @@ Market Lane is a simple Laravel storefront built for testing. It uses SQLite by 
 
 ## What is Included
 
-- At least 200 seeded products with real product names, prices, stock, ratings, descriptions, specifications, warranty data, and storefront display metadata.
+- More than 350 seeded products with real product names, prices, stock, ratings, descriptions, specifications, warranty data, and storefront display metadata.
 - Related test models for `Category`, `Brand`, `Customer`, `Order`, `OrderItem`, `ProductReview`, and `InventoryMovement`.
 - Seeded sample orders, reviews, customers, and inventory events for testing data relationships.
 - A public storefront at `/` with category filtering, search, sorting, product cards, and a client-side cart preview.
