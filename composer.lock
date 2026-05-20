@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36793882908b6cbdd344b5a4840231db",
+    "content-hash": "80b033fb9e75b7bbcd33ba8f780d8f13",
     "packages": [
         {
             "name": "brick/math",
@@ -2025,6 +2025,68 @@
                 }
             ],
             "time": "2026-03-08T20:05:35+00:00"
+        },
+        {
+            "name": "mbs047/model-mind",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mbs047/model-mind.git",
+                "reference": "ada18a9fd707920307ecfc7d1ab09901bf946020"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mbs047/model-mind/zipball/ada18a9fd707920307ecfc7d1ab09901bf946020",
+                "reference": "ada18a9fd707920307ecfc7d1ab09901bf946020",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "illuminate/database": "^11.0|^12.0|^13.0",
+                "illuminate/http": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "illuminate/view": "^11.0|^12.0|^13.0",
+                "php": "^8.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mbs\\ModelMind\\ModelMindServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mbs\\ModelMind\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohammed Baobaid",
+                    "homepage": "https://github.com/mbs047"
+                }
+            ],
+            "description": "ModelMind: a secure, configurable, model-aware AI chat assistant for Laravel applications.",
+            "keywords": [
+                "ai",
+                "assistant",
+                "blade",
+                "chat",
+                "eloquent",
+                "laravel",
+                "mbs",
+                "tailwind"
+            ],
+            "support": {
+                "issues": "https://github.com/mbs047/model-mind/issues",
+                "source": "https://github.com/mbs047/model-mind/tree/v1.0.3"
+            },
+            "time": "2026-05-20T16:47:31+00:00"
         },
         {
             "name": "monolog/monolog",

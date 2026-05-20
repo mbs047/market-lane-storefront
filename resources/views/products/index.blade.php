@@ -65,4 +65,6 @@
             </div>
         </main>
     </body>
+
+    @modelMind
 </html>
