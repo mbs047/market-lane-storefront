@@ -9,3 +9,151 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@layer components {
+    .category-filter {
+        @apply inline-flex shrink-0 items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:border-emerald-200 hover:text-emerald-700;
+    }
+
+    .category-filter span {
+        @apply rounded bg-slate-100 px-2 py-0.5 text-xs text-slate-500;
+    }
+
+    .category-filter.is-active {
+        @apply border-emerald-700 bg-emerald-700 text-white;
+    }
+
+    .category-filter.is-active span {
+        @apply bg-white/15 text-white;
+    }
+
+    .product-visual {
+        @apply relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-100;
+    }
+
+    .product-visual::before {
+        content: '';
+        @apply absolute inset-x-8 bottom-8 h-px bg-slate-300/70;
+    }
+
+    .product-object {
+        @apply relative flex h-24 w-24 items-center justify-center rounded-lg border border-white/70 bg-white/80 text-sm font-black text-slate-800 shadow-lg;
+    }
+
+    .product-object span {
+        @apply rounded bg-white/80 px-2 py-1;
+    }
+
+    .phone-titanium,
+    .phone-graphite {
+        background: linear-gradient(145deg, #f8fafc 0%, #dbeafe 100%);
+    }
+
+    .phone-titanium .product-object,
+    .phone-graphite .product-object {
+        @apply h-28 w-16 rounded-2xl;
+        background: linear-gradient(145deg, #e2e8f0, #64748b);
+    }
+
+    .audio-black,
+    .earbuds-black,
+    .earbuds-white {
+        background: linear-gradient(145deg, #f8fafc 0%, #ecfeff 100%);
+    }
+
+    .audio-black .product-object,
+    .earbuds-black .product-object,
+    .earbuds-white .product-object {
+        @apply rounded-full;
+        background: linear-gradient(145deg, #0f172a, #334155);
+        color: #fff;
+    }
+
+    .earbuds-white .product-object {
+        background: linear-gradient(145deg, #fff, #e2e8f0);
+        color: #0f172a;
+    }
+
+    .laptop-teal,
+    .laptop-silver {
+        background: linear-gradient(145deg, #f8fafc 0%, #ccfbf1 100%);
+    }
+
+    .laptop-teal .product-object,
+    .laptop-silver .product-object {
+        @apply h-20 w-32 rounded-md;
+        background: linear-gradient(145deg, #0f172a, #64748b);
+        color: #fff;
+    }
+
+    .gaming-red,
+    .console-white,
+    .console-black {
+        background: linear-gradient(145deg, #fff7ed 0%, #d1fae5 100%);
+    }
+
+    .gaming-red .product-object,
+    .console-white .product-object,
+    .console-black .product-object {
+        @apply h-20 w-28 rounded-2xl;
+    }
+
+    .console-black .product-object {
+        background: linear-gradient(145deg, #020617, #334155);
+        color: #fff;
+    }
+
+    .tv-blue,
+    .tablet-green {
+        background: linear-gradient(145deg, #f8fafc 0%, #dbeafe 100%);
+    }
+
+    .tv-blue .product-object,
+    .tablet-green .product-object {
+        @apply h-20 w-32 rounded-md;
+        background: linear-gradient(145deg, #1e3a8a, #60a5fa);
+        color: #fff;
+    }
+
+    .camera-black,
+    .camera-silver {
+        background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .camera-black .product-object,
+    .camera-silver .product-object {
+        @apply rounded-2xl;
+        background: linear-gradient(145deg, #111827, #64748b);
+        color: #fff;
+    }
+
+    .home-gold,
+    .kitchen-silver,
+    .kitchen-black {
+        background: linear-gradient(145deg, #fff 0%, #fef3c7 100%);
+    }
+
+    .home-gold .product-object,
+    .kitchen-silver .product-object,
+    .kitchen-black .product-object {
+        @apply h-28 w-20 rounded-2xl;
+        background: linear-gradient(145deg, #f8fafc, #94a3b8);
+    }
+
+    .watch-blue,
+    .accessory-gray,
+    .toy-red {
+        background: linear-gradient(145deg, #f8fafc 0%, #ccfbf1 100%);
+    }
+
+    .watch-blue .product-object,
+    .accessory-gray .product-object,
+    .toy-red .product-object {
+        @apply rounded-full;
+    }
+
+    .toy-red .product-object {
+        background: linear-gradient(145deg, #fee2e2, #ef4444);
+        color: #7f1d1d;
+    }
+}
