@@ -2028,16 +2028,16 @@
         },
         {
             "name": "mbs047/model-mind",
-            "version": "v1.0.5",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mbs047/model-mind.git",
-                "reference": "535eae833c6accab563f14d1a38d4a3064b1bb22"
+                "reference": "3773377e3196e793904ae28427dafaad26de85c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mbs047/model-mind/zipball/535eae833c6accab563f14d1a38d4a3064b1bb22",
-                "reference": "535eae833c6accab563f14d1a38d4a3064b1bb22",
+                "url": "https://api.github.com/repos/mbs047/model-mind/zipball/3773377e3196e793904ae28427dafaad26de85c8",
+                "reference": "3773377e3196e793904ae28427dafaad26de85c8",
                 "shasum": ""
             },
             "require": {
@@ -2089,9 +2089,15 @@
             ],
             "support": {
                 "issues": "https://github.com/mbs047/model-mind/issues",
-                "source": "https://github.com/mbs047/model-mind/tree/v1.0.5"
+                "source": "https://github.com/mbs047/model-mind/tree/v1.0.7"
             },
-            "time": "2026-05-20T17:38:16+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/mbs047",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-05-20T18:31:45+00:00"
         },
         {
             "name": "monolog/monolog",
