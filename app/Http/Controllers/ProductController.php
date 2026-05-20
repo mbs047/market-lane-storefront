@@ -12,7 +12,7 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    public function __invoke(): View
+    public function index(): View
     {
         $products = Product::query()
             ->with(['brandModel', 'categoryModel'])
@@ -51,6 +51,31 @@ class ProductController extends Controller
                 'inventoryMovements' => InventoryMovement::query()->count(),
                 'orderRevenue' => (float) Order::query()->where('status', '!=', 'cancelled')->sum('grand_total'),
             ],
+        ]);
+    }
+
+    public function show(Product $product): View
+    {
+        $product->load([
+            'brandModel',
+            'categoryModel',
+            'inventoryMovements' => fn ($query) => $query->latest('occurred_at')->limit(8),
+            'reviews' => fn ($query) => $query->with('customer')->latest('reviewed_at'),
+        ]);
+
+        $relatedProducts = Product::query()
+            ->with(['brandModel', 'categoryModel'])
+            ->where('is_active', true)
+            ->whereKeyNot($product->getKey())
+            ->when($product->category_id, fn ($query) => $query->where('category_id', $product->category_id))
+            ->orderByDesc('is_featured')
+            ->orderByDesc('rating')
+            ->limit(4)
+            ->get();
+
+        return view('products.show', [
+            'product' => $product,
+            'relatedProducts' => $relatedProducts,
         ]);
     }
 }

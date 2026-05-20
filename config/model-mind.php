@@ -89,6 +89,15 @@ return [
             'relations' => ['categoryModel', 'brandModel', 'reviews'],
             'limit' => 50,
             'order_by' => ['updated_at' => 'desc'],
+            'route_actions' => [
+                'products.view' => [
+                    'label' => 'View product',
+                    'description' => 'Open the product detail page.',
+                    'route' => 'products.show',
+                    'parameters' => ['product' => 'id'],
+                    'kind' => 'route',
+                ],
+            ],
         ],
         Customer::class => [
             'enabled' => true,

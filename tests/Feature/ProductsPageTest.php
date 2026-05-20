@@ -16,6 +16,8 @@ class ProductsPageTest extends TestCase
         $this->withoutVite();
         $this->seed(DatabaseSeeder::class);
 
+        $product = Product::query()->where('sku', 'PRD-1001')->firstOrFail();
+
         $response = $this->get('/');
 
         $response
@@ -25,8 +27,35 @@ class ProductsPageTest extends TestCase
             ->assertSee('Testing data included')
             ->assertSee('Apple iPhone 15 Pro 256GB')
             ->assertSee('Sony WH-1000XM5 Headphones')
+            ->assertSee(route('products.show', $product))
             ->assertSee('$1,099.00');
 
         $this->assertGreaterThanOrEqual(200, Product::query()->count());
+    }
+
+    public function test_product_details_page_shows_product_data(): void
+    {
+        $this->withoutVite();
+        $this->seed(DatabaseSeeder::class);
+
+        $product = Product::query()
+            ->where('sku', 'PRD-1001')
+            ->with(['reviews', 'inventoryMovements'])
+            ->firstOrFail();
+
+        $response = $this->get(route('products.show', $product));
+
+        $response
+            ->assertOk()
+            ->assertSee('Apple iPhone 15 Pro 256GB')
+            ->assertSee('Product details')
+            ->assertSee('Customer reviews')
+            ->assertSee('Inventory events')
+            ->assertSee('Related products')
+            ->assertSee($product->short_description)
+            ->assertSee($product->sku);
+
+        $this->assertGreaterThan(0, $product->reviews->count());
+        $this->assertGreaterThan(0, $product->inventoryMovements->count());
     }
 }

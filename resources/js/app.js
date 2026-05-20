@@ -78,10 +78,26 @@ const renderCart = () => {
         target.textContent = count;
     });
 
-    document.querySelector('[data-cart-subtotal]').textContent = money.format(subtotal);
-    document.querySelector('[data-cart-tax]').textContent = money.format(tax);
-    document.querySelector('[data-cart-shipping]').textContent = shipping === 0 ? 'Free' : money.format(shipping);
-    document.querySelector('[data-cart-total]').textContent = money.format(total);
+    const subtotalTarget = document.querySelector('[data-cart-subtotal]');
+    const taxTarget = document.querySelector('[data-cart-tax]');
+    const shippingTarget = document.querySelector('[data-cart-shipping]');
+    const totalTarget = document.querySelector('[data-cart-total]');
+
+    if (subtotalTarget) {
+        subtotalTarget.textContent = money.format(subtotal);
+    }
+
+    if (taxTarget) {
+        taxTarget.textContent = money.format(tax);
+    }
+
+    if (shippingTarget) {
+        shippingTarget.textContent = shipping === 0 ? 'Free' : money.format(shipping);
+    }
+
+    if (totalTarget) {
+        totalTarget.textContent = money.format(total);
+    }
 
     if (!cartItemsTarget) {
         return;

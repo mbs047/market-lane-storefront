@@ -12,7 +12,7 @@
         <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
             <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
                 <div class="flex items-center justify-between gap-6">
-                    <a href="#" class="flex items-center gap-3">
+                    <a href="{{ route('products.index') }}" class="flex items-center gap-3">
                         <span class="flex size-10 items-center justify-center rounded-lg bg-emerald-700 text-sm font-bold text-white">ML</span>
                         <span class="text-2xl font-bold tracking-normal">Market Lane</span>
                     </a>
@@ -164,7 +164,7 @@
                                     data-rating="{{ (float) $product->rating }}"
                                     data-stock="{{ $product->stock }}"
                                     data-featured="{{ $product->is_featured ? 1 : 0 }}">
-                                    <div class="product-visual {{ $product->image_theme }}">
+                                    <a href="{{ route('products.show', $product) }}" class="product-visual {{ $product->image_theme }} group">
                                         <div class="product-object">
                                             <span>{{ $product->image_label }}</span>
                                         </div>
@@ -173,12 +173,15 @@
                                         @elseif ($product->previous_price)
                                             <span class="absolute left-3 top-3 rounded bg-amber-50 px-2 py-1 text-xs font-bold text-amber-700">Deal</span>
                                         @endif
-                                    </div>
+                                        <span class="absolute bottom-3 right-3 rounded bg-white px-3 py-1.5 text-xs font-bold text-slate-900 opacity-0 shadow-sm transition group-hover:opacity-100">View details</span>
+                                    </a>
 
                                     <div class="mt-4 flex items-start justify-between gap-3">
                                         <div>
                                             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{{ $product->brand }}</p>
-                                            <h3 class="mt-1 min-h-12 text-base font-bold leading-6 text-slate-950">{{ $product->name }}</h3>
+                                            <h3 class="mt-1 min-h-12 text-base font-bold leading-6 text-slate-950">
+                                                <a href="{{ route('products.show', $product) }}" class="transition hover:text-emerald-700">{{ $product->name }}</a>
+                                            </h3>
                                         </div>
                                         <button type="button" class="rounded-lg border border-slate-200 p-2 text-slate-500 transition hover:border-emerald-200 hover:text-emerald-700" aria-label="Save {{ $product->name }}">
                                             <svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7-4.6-7-10.2A4 4 0 0 1 12 7a4 4 0 0 1 7 2.8C19 15.4 12 20 12 20Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -218,16 +221,19 @@
                                         <span>Return {{ $product->return_window_days }} days</span>
                                     </div>
 
-                                    <button type="button" class="mt-4 w-full rounded-lg bg-emerald-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"
-                                        data-add-to-cart
-                                        data-id="{{ $product->id }}"
-                                        data-name="{{ $product->name }}"
-                                        data-brand="{{ $product->brand }}"
-                                        data-price="{{ (float) $product->price }}"
-                                        data-theme="{{ $product->image_theme }}"
-                                        data-label="{{ $product->image_label }}">
-                                        Add to cart
-                                    </button>
+                                    <div class="mt-4 grid grid-cols-[1fr_auto] gap-2">
+                                        <button type="button" class="rounded-lg bg-emerald-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"
+                                            data-add-to-cart
+                                            data-id="{{ $product->id }}"
+                                            data-name="{{ $product->name }}"
+                                            data-brand="{{ $product->brand }}"
+                                            data-price="{{ (float) $product->price }}"
+                                            data-theme="{{ $product->image_theme }}"
+                                            data-label="{{ $product->image_label }}">
+                                            Add to cart
+                                        </button>
+                                        <a href="{{ route('products.show', $product) }}" class="rounded-lg border border-slate-200 px-4 py-3 text-sm font-bold text-slate-700 transition hover:border-emerald-200 hover:text-emerald-700">Details</a>
+                                    </div>
                                 </article>
                             @endforeach
                         </div>

@@ -37,11 +37,11 @@
     }
 
     .product-object {
-        @apply relative flex h-24 w-24 items-center justify-center rounded-lg border border-white/70 bg-white/80 text-sm font-black text-slate-800 shadow-lg;
+        @apply relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-lg border border-white/70 bg-white/80 text-center text-sm font-black text-slate-800 shadow-lg;
     }
 
     .product-object span {
-        @apply rounded bg-white/80 px-2 py-1;
+        @apply block w-max max-w-full truncate rounded bg-white/80 px-2 py-1;
     }
 
     .phone-titanium,
@@ -53,6 +53,11 @@
     .phone-graphite .product-object {
         @apply h-28 w-16 rounded-2xl;
         background: linear-gradient(145deg, #e2e8f0, #64748b);
+    }
+
+    .phone-titanium .product-object span,
+    .phone-graphite .product-object span {
+        @apply px-1 text-[10px];
     }
 
     .audio-black,
