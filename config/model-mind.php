@@ -1,6 +1,11 @@
 <?php
 
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Customer;
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductReview;
 
 return [
     'assistant' => [
@@ -52,16 +57,71 @@ return [
     ],
 
     'models' => [
-        Product::class => [
+        Category::class => [
             'enabled' => true,
-            'label' => 'Products',
-            'description' => 'Public product catalog.',
+            'label' => 'Categories',
+            'description' => 'Storefront catalog categories.',
             'columns' => 'auto',
             'include' => [],
             'exclude' => [],
-            'relations' => [],
+            'relations' => ['products'],
+            'limit' => 25,
+            'order_by' => ['display_order' => 'asc'],
+        ],
+        Brand::class => [
+            'enabled' => true,
+            'label' => 'Brands',
+            'description' => 'Brands represented in the test store catalog.',
+            'columns' => 'auto',
+            'include' => [],
+            'exclude' => [],
+            'relations' => ['products'],
+            'limit' => 25,
+            'order_by' => ['name' => 'asc'],
+        ],
+        Product::class => [
+            'enabled' => true,
+            'label' => 'Products',
+            'description' => 'Public product catalog with storefront pricing, stock, ratings, and specifications.',
+            'columns' => 'auto',
+            'include' => [],
+            'exclude' => [],
+            'relations' => ['categoryModel', 'brandModel', 'reviews'],
             'limit' => 50,
             'order_by' => ['updated_at' => 'desc'],
+        ],
+        Customer::class => [
+            'enabled' => true,
+            'label' => 'Customers',
+            'description' => 'Seeded customer profiles for test orders and reviews.',
+            'columns' => 'auto',
+            'include' => [],
+            'exclude' => ['phone'],
+            'relations' => ['orders'],
+            'limit' => 25,
+            'order_by' => ['joined_at' => 'desc'],
+        ],
+        Order::class => [
+            'enabled' => true,
+            'label' => 'Orders',
+            'description' => 'Seeded ecommerce orders for testing order summaries and fulfillment states.',
+            'columns' => 'auto',
+            'include' => [],
+            'exclude' => [],
+            'relations' => ['customer', 'items'],
+            'limit' => 25,
+            'order_by' => ['placed_at' => 'desc'],
+        ],
+        ProductReview::class => [
+            'enabled' => true,
+            'label' => 'Product reviews',
+            'description' => 'Seeded product reviews for testing product detail and rating data.',
+            'columns' => 'auto',
+            'include' => [],
+            'exclude' => [],
+            'relations' => ['product', 'customer'],
+            'limit' => 25,
+            'order_by' => ['reviewed_at' => 'desc'],
         ],
     ],
 
